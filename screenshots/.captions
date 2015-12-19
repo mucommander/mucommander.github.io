@@ -1,0 +1,17 @@
+
+# This is igal's .captions file, first generated Fri Sep 24 18:48:35 2004.
+# To the left of the separator are the image file names.  Enter your captions
+# on the right side, one per line.  The captions may include HTML tags.
+# To add any comments to this file or to exclude any images from the slide 
+# show, add a # sign at the beginning of their respective lines.  You may
+# also change the order of images in your slide show at this time.
+
+osx_server_connect_dialog.jpg ---- Connect to server dialog (FTP, SFTP, SMB, HTTP)
+osx_viewing_file_in_zip_archive_over_ftp.jpg ---- Viewing a file in a zip file on an FTP server
+osx_viewing_image_over_http.jpg ---- Viewing an image on an HTTP server
+osx_copying_files_over_smb.jpg ---- Copying files over SMB
+osx_edit_bookmarks_dialog.jpg ---- Universal bookmarks
+osx_email_files_dialog.jpg ---- Send files as attachments
+osx_preferences.jpg ---- Preferences dialog : customize colors and font
+osx_run_command_dialog.jpg ---- Run command dialog
+osx_about_mucommander.jpg ---- About screen 
