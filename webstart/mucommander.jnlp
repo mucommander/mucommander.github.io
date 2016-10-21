@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jnlp spec="1.0+" version="0.9.0" codebase="http://www.mucommander.com/webstart/" href="mucommander.jnlp">
+<jnlp spec="1.0+" version="0.9.1" codebase="http://www.mucommander.com/webstart/" href="mucommander.jnlp">
     <information>
         <title>muCommander</title>
         <vendor>Maxence Bernard</vendor>
@@ -22,5 +22,5 @@
         <j2se version="1.5+"/>
         <jar href="mucommander.jar"/>
     </resources>
-    <application-desc main-class="com.mucommander.Launcher"/>
+    <application-desc main-class="com.mucommander.muCommander"/>
 </jnlp>
