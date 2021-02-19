@@ -1,0 +1,303 @@
+html {
+    background: #00a5e2;
+    color: #fff;
+    font-family: Ubuntu, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+article {
+    max-width: 1150px;
+    margin: 0 auto;
+    box-shadow: 5px 10px 18px #183d54;
+    border: 1px solid #c0eef1;
+    overflow: hidden;
+}
+
+header {
+    background-color: #183d54;
+    display: grid;
+    grid-template-columns: 460px 100px 1fr;
+    padding: 0;
+    position: relative;
+}
+
+header .logo-area {
+    background: #c0eef1;
+    padding: 20px 0 20px 20px;
+}
+
+header img.wordmark {
+    display: none;
+}
+
+header .separator {
+    background: linear-gradient(120deg, #c0eef1 60%, #183d54 61%);
+}
+
+header nav {
+    padding: 20px 20px 0 0;
+    margin-top: 30px;
+    text-align: right;
+    margin-left: -30px;
+}
+
+header nav a {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 10px;
+}
+
+main {
+    background: #183d54;
+}
+
+footer {
+    background: #183d54;
+
+    padding: 20px;
+}
+
+h1 {
+    font-size: 38px;
+    line-height: 42px;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 32px;
+}
+
+h3 {
+    font-size: 20px;
+    line-height: 22px;
+}
+
+ul {
+    padding-left: 10px;
+    list-style-position: inside;
+}
+
+ul ::marker {
+    color: #008eb6;
+}
+
+li {
+    list-style: none;
+    line-height: 2em;
+}
+
+a {
+    color: #00a5e2;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #c0eef1;
+}
+
+p {
+    padding: 5px 0;
+    line-height: 1.7em;
+}
+.no-wrap {
+    white-space:nowrap;
+}
+section#about {
+    padding: 30px 20px;
+}
+
+section#about img {
+    width: 100%;
+}
+
+section#about li {
+    list-style: disc;
+}
+
+section#download {
+    padding: 10px 20px;
+}
+
+section#download .list-os {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 1em;
+    row-gap: 2em;
+    padding: 0;
+    margin: 20px -15px;
+}
+
+section#download .list-os .os {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 10px;
+    background-color: #00a5e2;
+    border-radius: 20px;
+}
+
+section#download .list-os li {
+    border: 1px solid #008eb6;
+    border-radius: 20px;
+}
+
+section#download .list-os .os-logo {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: grid;
+    width: 120px;
+    height: 150px;
+    background: #c0eef1;
+    place-items: center;
+}
+section#download .list-os label {
+    font-weight: bold;
+    line-height: 50px;
+}
+
+section#download .list-os .description {
+    font-size: 13px;
+    line-height: 16px;
+}
+
+section#download .list-os .md5 {
+    font-size: 9px;
+    line-height: 17px;
+    padding-left: 10px;
+    min-height: 35px;
+}
+
+section#download .download-link {
+    min-height: 55px;
+}
+section#download .download-link a {
+    color: #FFFF60;
+    font-weight: bold;
+}
+
+section#download ul.list-other-os {
+    font-size: 13px;
+}
+
+section#download ul.list-other-os li:before {
+    content: "+";
+    margin-right: 4px;
+    color: #008eb6;
+}
+
+section#community {
+    padding: 10px 20px;
+}
+
+section#help {
+    padding: 10px 0;
+    border-top: 1px solid #c0eef1;
+}
+
+section#help h3 {
+    text-transform: uppercase;
+}
+
+section#help ul.footer-links li {
+    display: block;
+}
+
+section#help ul.footer-links a {
+    padding: 10px 15px;
+    font-weight: bold;
+    line-height: 40px;
+}
+
+section#help .section-outro {
+    font-size: 12px;
+    text-align: right;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+@media (min-width: 481px) {
+    header img.wordmark {
+        display: initial;
+        width: 50%;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+    section#download .list-os {
+        margin: 20px 0;
+    }
+
+    section#help h3 {
+        float: left;
+    }
+
+    section#help ul.footer-links li {
+        display: inline-block;
+    }
+
+    section#help ul.footer-links {
+        text-align: right;
+    }
+}
+
+@media (min-width: 550px) {
+    header img.wordmark {
+        width: auto;
+    }
+}
+
+@media (min-width: 769px) {
+    section#about {
+        padding: 30px 50px;
+    }
+
+    section#about img {
+        width: 600px;
+    }
+
+    section#download {
+        padding: 10px 50px;
+    }
+
+    section#community {
+        padding: 10px 50px;
+    }
+
+    section#help {
+        padding: 10px 30px;
+    }
+
+    section#download .list-os {
+        grid-template-columns: 1fr 1fr;
+        margin: 20px -20px;
+    }
+}
+
+@media (min-width: 1025px) {
+    header nav a {
+        display: initial;
+    }
+
+    section#about img {
+        float: right;
+        padding: 0 10px;
+    }
+
+}
+
+@media (min-width: 1201px) {
+    article {
+        margin: 50px auto;
+    }
+
+    header nav a {
+        padding: 10px 20px;
+    }
+
+    section#download .list-os {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+}

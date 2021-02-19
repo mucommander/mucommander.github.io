@@ -1,0 +1,506 @@
+<html>
+<head>
+<title>muCommander: a cross-platform file manager</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/index.rdf">
+<style type="text/css">
+<!--
+BODY {
+scrollbar-face-color:#C0EEF1;
+scrollbar-highlight-color:#FFFFFF;
+scrollbar-3dlight-color:#C0EEF1;
+scrollbar-shadow-color:#C0EEF1;
+scrollbar-arrow-color:#006B92;
+scrollbar-track-color:#006B92;
+}
+table { font-size:11px; font-family:Verdana,Arial,Geneva; color:#C0EEF1; }
+a { text-decoration:none; color:#FFFF60; }
+a:hover { text-decoration:underline; color: #FFFF60; }
+a.navbar { font-size:11px; font-family:Verdana,Arial,Geneva; font-weight:bold; text-decoration:none; color:#CBFCFF; }
+a.navbar:hover { text-decoration:none; background-color:#C0EEF1; color:#006B92; }
+.title { font-size:14px; font-weight:bold; color:#CBFCFF; }
+.strong { text-decoration:none; color:#FFFFFF; }
+.tiny { font-size:9px; }
+.code { font-size:11px; text-decoration:none; color:#FFFFFF; padding: 5px; border: 1px solid #C0EEF1; margin-right: 10px; margin-left: 10px;}
+-->
+</style>
+<script type="text/javascript" src="lib/highslide/highslide.js"></script>
+<script type="text/javascript" src="lib/mucommander.js"></script>
+<script type="text/javascript">
+	// remove the registerOverlay call to disable the controlbar
+	hs.registerOverlay(
+    	{
+    		thumbnailId: null,
+    		overlayId: 'controlbar',
+    		position: 'top right',
+    		hideOnMouseOut: true
+		}
+	);
+	
+    hs.graphicsDir = 'lib/highslide/graphics/';
+    hs.outlineType = 'rounded-white';
+    hs.showCredits = false;
+    hs.allowSizeReduction = true;
+    hs.align = 'center';
+</script>
+
+<style type="text/css">
+.highslide {
+	cursor: url(lib/highslide/graphics/zoomin.cur), pointer;
+    outline: none;
+}
+.highslide img {
+	border: 2px solid gray;
+}
+.highslide:hover img {
+	border: 2px solid white;
+	border-color: #C0EEF1;
+}
+
+.highslide-image {
+    border: 2px solid white;
+}
+.highslide-image-blur {
+}
+.highslide-caption {
+    display: none;
+    
+    color: black;
+    border: 2px solid white;
+    border-top: none;
+    font-family: Verdana, Arial, Geneva;
+    font-size: 10pt;
+    padding: 5px;
+    background-color: white;
+}
+.highslide-loading {
+    display: block;
+	color: white;
+	font-size: 9px;
+	font-weight: bold;
+	text-transform: uppercase;
+    text-decoration: none;
+	padding: 3px;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+    background-color: black;
+    /*
+    padding-left: 22px;
+    background-image: url(lib/highslide/graphics/loader.gif);
+    background-repeat: no-repeat;
+    background-position: 3px 1px;
+    */
+}
+a.highslide-credits,
+a.highslide-credits i {
+    padding: 2px;
+    color: silver;
+    text-decoration: none;
+	font-size: 10px;
+}
+a.highslide-credits:hover,
+a.highslide-credits:hover i {
+    color: white;
+    background-color: gray;
+}
+
+.highslide-move {
+    cursor: move;
+}
+
+.highslide-overlay {
+	display: none;
+}
+
+/* Controlbar example */
+.controlbar {	
+	background: url(lib/highslide/graphics/controlbar4.gif);
+	width: 167px;
+	height: 34px;
+	margin-top: -15px;
+}
+.controlbar a {	
+	display: block;
+	float: left;
+	/*margin: 0px 0 0 4px;*/	
+	height: 27px;
+}
+.controlbar a:hover {
+	background-image: url(lib/highslide/graphics/controlbar4-hover.gif);
+}
+.controlbar .previous {
+	width: 50px;
+}
+.controlbar .next {
+	width: 40px;
+	background-position: -50px 0;
+}
+.controlbar .highslide-move {
+	width: 40px;
+	background-position: -90px 0;
+}
+.controlbar .close {
+	width: 36px;
+	background-position: -130px 0;
+}
+
+
+/* Necessary for functionality */
+.highslide-display-block {
+    display: block;
+}
+.highslide-display-none {
+    display: none;
+}
+</style></head><body bgcolor="#00A5E2" text="#99FFFF"><br><table width="650" border="0" cellspacing="0" cellpadding="0" align="center"><tr><td colspan="3" bgcolor="#00A5E2"><div align="center"><a href="index.html"><img alt="Logo (top)" border="0" src="gfx/logotop.png" width="371" height="102"></a></div></td></tr><tr> <td width="4" height="4" align="left" valign="top" bgcolor="#C0EEF1"><img alt="Corner" src="gfx/corner_topleft.gif" width="4" height="4" align="top"></td><td bgcolor="#C0EEF1" width="100%"> <div align="center"><a href="index.html"><img border="0" alt="Logl" src="gfx/logo.gif" width="371" height="66"></a></div></td><td width="4" height="4" align="right" valign="top" bgcolor="#C0EEF1"><img alt="Corner" src="gfx/corner_topright.gif" width="4" height="4" align="top"></td></tr><tr> <td colspan="3" bgcolor="#006B92"><div align="center"><a class="navbar" href="index.html#news">News</a> &nbsp;<img alt="Separator" src="gfx/dot.gif" width="5" height="5">&nbsp; <a class="navbar" href="index.html#download">Download</a> &nbsp;<img alt="Separator" src="gfx/dot.gif" width="5" height="5">&nbsp; <!-- <a class="navbar" href="/forums/">Forums</a> &nbsp;<img alt="Separator" src="gfx/dot.gif" width="5" height="5">&nbsp; --> <a class="navbar" href="https://github.com/mucommander/mucommander/wiki">Wiki</a> &nbsp;<img alt="Separator" src="gfx/dot.gif" width="5" height="5">&nbsp; <a class="navbar" href="https://github.com/mucommander/mucommander/wiki/FAQ">FAQ</a> &nbsp;<img alt="Separator" src="gfx/dot.gif" width="5" height="5">&nbsp; <a class="navbar" href="https://github.com/mucommander/mucommander/issues">Bugs</a> &nbsp;<img alt="Separator" src="gfx/dot.gif" width="5" height="5">&nbsp; <a class="navbar" href="https://github.com/mucommander/mucommander/wiki/Donate">Donate</a> &nbsp;<img alt="Separator" src="gfx/dot.gif" width="5" height="5">&nbsp; <a class="navbar" href="https://github.com/mucommander/mucommander/wiki/Credits">Credits</a> &nbsp;<img alt="Separator" src="gfx/dot.gif" width="5" height="5">&nbsp; <a class="navbar" href="index.html#contact">@</a></div></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><table border="0" width="90%"><tr><td><br><br>
+<p align="center">
+  <table border="0" width="75%" align="center">
+    <tr><td align="center"><em>&quot;I have found jesus. He came to me in the form of muCommander.&quot;</em></td></tr>
+    <tr><td align="right">-- A happy user</td></tr>
+  </table>
+</p>
+<br>
+
+<p>
+  <table border="0" width="75%" align="center">
+    <tr><td colspan="2" align="center">muCommander is a lightweight, cross-platform file manager with a dual-pane interface. It runs on any operating system with Java support (macOS, Windows, Linux, *BSD, Solaris...).</td></tr>
+    <tr><td colspan="2" align="center">&nbsp;</td></tr>
+
+    <tr><td colspan="2" align="center">Here's a non-exhaustive list of what you'll find:</td></tr>
+    <tr>
+      <td width="12" align="left" valign="top"><img alt="check" src="gfx/check.gif" width="10" height="10"></td>
+      <td>Virtual filesystem with support for local volumes, <b>FTP</b>, <b>SFTP</b>, <b>SMB</b>, <b>NFS</b>, <b>HTTP</b>, <b>Amazon S3</b>, Hadoop <b>HDFS</b> and <b>Bonjour</b></td>
+    </tr>
+    <tr> 
+      <td width="12" align="left" valign="top"><img alt="check" src="gfx/check.gif" width="10" height="10"></td>
+      <td>Quickly copy, move, rename files, create directories, email files...</td>
+    </tr>
+    <tr> 
+      <td width="12" align="left" valign="top"><img alt="check" src="gfx/check.gif" width="10" height="10"></td>
+      <td>Browse, create and uncompress <b>ZIP</b>, <b>RAR</b>, <b>7z</b>, <b>TAR</b>, <b>GZip</b>,<b> BZip2</b>, <b>ISO</b>/<b>NRG</b>, <b>AR</b>/<b>Deb</b> and <b>LST</b> archives</td>
+    </tr>
+    <tr> 
+      <td width="12" align="left" valign="top"><img alt="check" src="gfx/check.gif" width="10" height="10"></td>
+      <td><b>ZIP</b> files can be modified <b>on-the-fly</b>, without having to recompress the whole archive</td>
+    </tr>
+    <tr>
+      <td width="12" align="left" valign="top"><img alt="check" src="gfx/check.gif" width="10" height="10"></td>
+      <td>Tabbed navigation</td>
+    </tr>
+    <tr>
+      <td width="12" align="left" valign="top"><img alt="check" src="gfx/check.gif" width="10" height="10"></td>
+      <td>Universal bookmarks and credentials manager</td>
+    </tr>
+    <tr> 
+      <td width="12" align="left" valign="top"><img alt="check" src="gfx/check.gif" width="10" height="10"></td>
+      <td>Multiple windows support</td>
+    </tr>
+    <tr> 
+      <td width="12" align="left" valign="top"><img alt="check" src="gfx/check.gif" width="10" height="10"></td>
+      <td>Full keyboard access</td>
+    </tr>
+    <tr> 
+      <td width="12" align="left" valign="top"><img alt="check" src="gfx/check.gif" width="10" height="10"></td>
+      <td>Highly configurable</td>
+    </tr>
+    <tr> 
+      <td width="12" align="left" valign="top"><img alt="check" src="gfx/check.gif" width="10" height="10"></td>
+      <td>Available in <b>27 languages</b> : American &amp; British English, French, German, Spanish, Czech, Simplified &amp; Traditional Chinese, Polish, Hungarian, Russian, Slovenian, Romanian, Italian, Korean, Brazilian Portuguese, Dutch, Slovak, Japanese, Swedish, Danish, Ukrainian, Arabic, Turkish, Catalan, Belarusian and Norwegian.</td>
+    </tr>
+    <tr> 
+      <td width="12" align="left" valign="top"><img alt="check" src="gfx/check.gif" width="10" height="10"></td>
+      <td><b>Free Software</b> (GPL)</td>
+    </tr>
+  </table>
+</p>
+<br> 
+
+<p align="center">
+  <a href="screenshots.html"><img alt="Screenshot" src="screenshots/thumbs/1.png" width="130" height="98" border="0"><br/>>> More screenshots <<</a>
+</p>
+
+<p align="center">&nbsp;</p>
+
+<tr><td bgcolor="#006B92" align="center" colspan="3"><script type="text/javascript"><!--
+google_ad_client = "pub-7239481569524029";
+//main site
+google_ad_slot = "3747363647";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_channel ="8235352841";
+//--></script>
+<script type="text/javascript" src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+</td></tr></table></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><p>&nbsp;</p><img alt="Separator" src="gfx/separator.gif" width="600" height="1"><p>&nbsp;</p></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><table border="0" width="90%"><tr><td>
+<p class="title" align="center"><a name="news"></a>News &nbsp;</p> 
+<p align="center"><a class="twitter-timeline" href="https://twitter.com/muCommander/timelines/678220073794949121" data-widget-id="678220400665436160" data-chrome="nofooter noborders noscrollbar transparent noheader"></a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</a></p>
+
+<!-- <p align="center">
+<a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=maxence"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=maxence"></script>&nbsp;<a href="http://www.addthis.com/feed.php?pub=maxence&h1=http%3A%2F%2Fwww.mucommander.com%2Findex.rdf&t1=" title="Subscribe using any feed reader!"><img src="http://s9.addthis.com/button1-rss.gif" width="125" height="16" border="0" alt="AddThis Feed Button" /></a></p>
+-->
+
+</td></tr></table></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><p>&nbsp;</p><img alt="Separator" src="gfx/separator.gif" width="600" height="1"><p>&nbsp;</p></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><table border="0" width="90%"><tr><td>
+<p class="title" align="center"><a name="download"></a>Download</p>
+
+<p align="center"><b>Current</b> version is <b>0.9.6</b>. Find out <a href="https://raw.githubusercontent.com/mucommander/mucommander/0.9.6-1/package/readme.txt">what's new</a> in this version.</p>
+
+<!--<p align="center">
+  <b>Nightly builds</b> are also available, last baked on <b>Dec 27, 2013</b>.  
+  Check out the <a href="download/nightly/readme.txt">recent changes</a>.<br>
+  Please be aware that nightly builds may contain bugs that haven't been spotted yet.
+</p>-->
+
+<p align="center">
+  Older versions are available for download by following the links on <a href="https://github.com/mucommander/mucommander/releases">this page</a>.
+</p>
+
+<p align="center">muCommander is <b>Free Software</b>, released under the <a href="https://www.gnu.org/licenses/gpl.html" target="_blank" rel="nofollow">GNU GPL v3</a>. To download the source code, see the <a href="https://github.com/mucommander/mucommander/wiki/Developer-Resources">developer resources</a> page.</p>
+
+<br>
+
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#0099CC" width="100%">
+  <tr>
+    <td width="6" height="4" align="left" valign="top"><img alt="Corner" src="gfx/corner_light_topleft.gif" width="4" height="4" align="top"></td>
+    <td width="30%">&nbsp;</td>
+    <td width="6" height="4" align="right" valign="top"><img alt="Corner" src="gfx/corner_light_topright.gif" width="4" height="4" align="top"></td>
+
+    <td width="10" bgcolor="#006B92">&nbsp;</td>
+
+    <td width="6" height="4" align="left" valign="top"><img alt="Corner" src="gfx/corner_light_topleft.gif" width="4" height="4" align="top"></td>
+    <td width="30%">&nbsp;</td>
+    <td width="6" height="4" align="right" valign="top"><img alt="Corner" src="gfx/corner_light_topright.gif" width="4" height="4" align="top"></td>
+
+    <td width="10" bgcolor="#006B92">&nbsp;</td>
+
+    <td width="6" height="4" align="left" valign="top"><img alt="Corner" src="gfx/corner_light_topleft.gif" width="4" height="4" align="top"></td>
+    <td width="30%">&nbsp;</td>
+    <td width="6" height="4" align="right" valign="top"><img alt="Corner" src="gfx/corner_light_topright.gif" width="4" height="4" align="top"></td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td valign="top">
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander-0.9.6-1.dmg"><img alt="OS X" src="gfx/icon_osx.gif" width="40" height="30" border="0" align="middle"></a><b class="strong"> macOS</b></p>
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander-0.9.6-1.dmg">v0.9.6</a> (dmg, 77.5 MB)</p>
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.1/mucommander-0.9.1-apple-java.dmg">v0.9.1 (Apple Java)</a> (dmg, 27.8 MB)</p>
+<!--      <p><a href="download/nightly/mucommander-current.app.tar.gz">Nightly build</a> (tar.gz, 6.9 MB)</p> -->
+    </td>
+    <td>&nbsp;</td>
+
+    <td bgcolor="#006B92">&nbsp;</td>
+
+    <td>&nbsp;</td>
+    <td valign="top">
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander-0.9.6-1.exe"><img alt="Windows" src="gfx/icon_win.gif" width="40" height="30" border="0" align="middle"></a><b class="strong"> Windows</b></p>
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander-0.9.6-1.exe">v0.9.6</a> (exe, 40.1 MB)</p>
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander-0.9.6-1-bundled.exe">v0.9.6 + JRE</a> (exe, 79.9 MB)</p>
+<!--      <p><a href="download/nightly/mucommander-current-setup.exe">Nightly build</a> (exe, 6.9 MB)</p> -->
+    </td>
+    <td>&nbsp;</td>
+
+    <td bgcolor="#006B92">&nbsp;</td>
+
+    <td>&nbsp;</td>
+    <td valign="top">
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander_0.9.6-1_all.deb"><img alt="Debian" src="gfx/icon_debian.gif" width="40" height="30" border="0" align="middle"></a><b class="strong"> Debian / Ubuntu</b></p>
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander_0.9.6-1_all.deb">v0.9.6</a> (deb, 39.9 MB)</p>
+<!--      <p><a href="download/nightly/mucommander_current_all.deb">Nightly build</a> (deb, 6.7 MB)</p> -->
+<!--      <p><a href="https://bintray.com/mucommander">APT repository</a></p> -->
+      <p class="strong">for Debian, Ubuntu, and other Debian-based OS.</p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td valign="bottom"><img alt="Corner" src="gfx/corner_light_bottomleft.gif" width="4" height="4" align="bottom"></td>
+    <td>&nbsp;</td>
+    <td align="right" valign="bottom"><img alt="Corner" src="gfx/corner_light_bottomright.gif" width="4" height="4" align="bottom"></td>
+
+    <td bgcolor="#006B92">&nbsp;</td>
+
+    <td align="left" valign="bottom"><img alt="Corner" src="gfx/corner_light_bottomleft.gif" width="4" height="4" align="bottom"></td>
+    <td>&nbsp;</td>
+    <td align="right" valign="bottom"><img alt="Corner" src="gfx/corner_light_bottomright.gif" width="4" height="4" align="bottom"></td>
+
+    <td bgcolor="#006B92">&nbsp;</td>
+
+    <td align="left" valign="bottom"><img alt="Corner" src="gfx/corner_light_bottomleft.gif" width="4" height="4" align="bottom"></td>
+    <td>&nbsp;</td>
+    <td align="right" valign="bottom"><img alt="Corner" src="gfx/corner_light_bottomright.gif" width="4" height="4" align="bottom"></td>
+  </tr>
+
+  <tr><td colspan="11" height="10" bgcolor="#006B92">&nbsp;</td></tr>
+
+  <tr>
+    <td align="left" valign="top"><img alt="Corner" src="gfx/corner_light_topleft.gif" width="4" height="4" align="top"></td>
+    <td>&nbsp;</td>
+    <td align="right" valign="top"><img alt="Corner" src="gfx/corner_light_topright.gif" width="4" height="4" align="top"></td>
+
+    <td bgcolor="#006B92">&nbsp;</td>
+
+    <td align="left" valign="top"><img alt="Corner" src="gfx/corner_light_topleft.gif" width="4" height="4" align="top"></td>
+    <td>&nbsp;</td>
+    <td align="right" valign="top"><img alt="Corner" src="gfx/corner_light_topright.gif" width="4" height="4" align="top"></td>
+
+    <td bgcolor="#006B92">&nbsp;</td>
+
+    <td align="left" valign="top"><img alt="Corner" src="gfx/corner_light_topleft.gif" width="4" height="4" align="top"></td>
+    <td>&nbsp;</td>
+    <td align="right" valign="top"><img alt="Corner" src="gfx/corner_light_topright.gif" width="4" height="4" align="top"></td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td valign="top">
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander_0.9.6-1.noarch.rpm"><img alt="Fedora" src="gfx/icon_fedora.png" width="50" height="40" border="0" align="middle"><b class="strong"></a> RPM</b></p>
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander_0.9.6-1.noarch.rpm">v0.9.6</a> (rpm, 39.9 MB)</p>
+<!--      <p><a href="webstart/nightly/mucommander.jnlp">Nightly build</a> (8.5 MB)</p> -->
+      <p class="strong">for Fedora, RHEL, and Centos.</p>
+    </td>
+    <td>&nbsp;</td>
+
+    <td bgcolor="#006B92">&nbsp;</td>
+
+    <td>&nbsp;</td>
+    <td valign="top">
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander-0.9.6-1.tar.gz"><img alt="Linux" src="gfx/icon_linux.gif" width="40" height="40" border="0" align="middle"></a><b class="strong"> Linux / Other</b></p>
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander-0.9.6-1.tar.gz">v0.9.6</a> (tar.gz, 40.2 MB)</p>
+<!--      <p><a href="download/nightly/mucommander-current.tar.gz">Nightly build</a> (tar.gz, 6.7 MB)</p> -->
+      <p class="strong">for Linux, Solaris, *BSD, AIX, OS/2 and other OS with Java support.</p>
+    </td>
+    <td>&nbsp;</td>
+
+    <td bgcolor="#006B92">&nbsp;</td>
+
+    <td>&nbsp;</td>
+    <td valign="top">
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander-0.9.6-1-portable.tar.gz"><img alt="USB" src="gfx/icon_usb.gif" width="40" height="40" border="0" align="middle"></a><b class="strong"> Portable version</b></p>
+      <p><a href="https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander-0.9.6-1-portable.tar.gz">v0.9.6</a> (zip, 40.3 MB)</p>
+<!--      <p><a href="download/nightly/mucommander-current-portable.tar.gz">Nightly build</a> (tar.gz, 6.7 MB)</p> -->
+      <p class="strong">Bring muCommander everywhere with you and use it on any computer.</p>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td valign="bottom"><img alt="Corner" src="gfx/corner_light_bottomleft.gif" width="4" height="4" align="bottom"></td>
+    <td>&nbsp;</td>
+    <td align="right" valign="bottom"><img alt="Corner" src="gfx/corner_light_bottomright.gif" width="4" height="4" align="bottom"></td>
+
+    <td bgcolor="#006B92">&nbsp;</td>
+
+    <td align="left" valign="bottom"><img alt="Corner" src="gfx/corner_light_bottomleft.gif" width="4" height="4" align="bottom"></td>
+    <td>&nbsp;</td>
+    <td align="right" valign="bottom"><img alt="Corner" src="gfx/corner_light_bottomright.gif" width="4" height="4" align="bottom"></td>
+
+    <td bgcolor="#006B92">&nbsp;</td>
+
+    <td align="left" valign="bottom"><img alt="Corner" src="gfx/corner_light_bottomleft.gif" width="4" height="4" align="bottom"></td>
+    <td>&nbsp;</td>
+    <td align="right" valign="bottom"><img alt="Corner" src="gfx/corner_light_bottomright.gif" width="4" height="4" align="bottom"></td>
+  </tr>
+</table>
+
+<p>
+  <ul style="list-style: none; padding-left: 10px">
+    <b>MD5:</b>
+    <li>d2aebaa9afe4c9b3df47a80c7fd9bd36 mucommander-0.9.6-1.dmg</li>
+    <li>ed6e5277f7a34106c5bf3fff0215056b mucommander-0.9.6-1.exe</li>
+    <li>7e1ce76a6c400311fd2dcfd1c9d1ee08 mucommander-0.9.6-1-bundled.exe</li>
+    <li>3e58a3630d3e248a2a98a8376faf5142 mucommander-0.9.6-1.noarch.rpm</li>
+    <li>1dff46d9be24d3d1e2addb4325b47788 mucommander_0.9.6-1_all.deb</li>
+    <li>3a9ada5ff111a3a6b475701c2bf13d44 mucommander-0.9.6-1.tar.gz</li>
+    <li>516073e923225d3f4840f148f2639e18 mucommander-0.9.6-1-portable.zip</li>
+  </ul>
+</p>
+
+
+<p>
+  <ul style="list-style: none; padding-left: 10px">
+    <li>+ <b>FreeBSD</b>: muCommander is also available as a <a href="https://www.freshports.org/x11-fm/mucommander/">FreeBSD port</a>.</li>
+    <li>+ <b>OpenVMS</b>: muCommander has been ported to <a href="https://vmsfree.ouvaton.org/freen/index.php?s=mucommander">OpenVMS</a>.</li>
+  </ul>
+</p>
+
+
+<br>
+
+<tr><td bgcolor="#006B92" align="center" colspan="3"><script type="text/javascript"><!--
+google_ad_client = "pub-7239481569524029";
+//main site
+google_ad_slot = "3747363647";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_channel ="4466723006";
+//--></script>
+<script type="text/javascript" src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+</td></tr></table></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><p>&nbsp;</p><img alt="Separator" src="gfx/separator.gif" width="600" height="1"><p>&nbsp;</p></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><table border="0" width="90%"><tr><td>
+<p class="title" align="center"><a name="requirements"></a>Requirements</p>
+<table border="0" cellspacing="4" width="80%" align="center">
+  <tr> 
+    <td align="left">
+      Java 11 or later is required to run muCommander.<br>
+      Java 11 is recommended, you can download it at <a href="https://www.java.com" target="_blank" rel="nofollow">java.com</a>.
+    </td>
+    <td align="right" valign="top"><a href="https://www.java.com" target="_blank" rel="nofollow"><img alt="Get Java" src="gfx/get-java.gif" width="88" height="31" border="0"></a></td>
+  </tr>
+</table>
+
+</td></tr></table></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><p>&nbsp;</p><img alt="Separator" src="gfx/separator.gif" width="600" height="1"><p>&nbsp;</p></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><table border="0" width="90%"><tr><td>
+<p class="title" align="center"><a name="contribute" id="contribute"></a>Contribute</p>
+<table border="0" align="center" width="75%">
+  <tr><td colspan="2" align="center">This is an ongoing project, and there are many ways you can help!<br>Here are some of the things you can do:</td></tr>
+  <tr>
+    <td><p></td>
+  </tr>
+  <tr> 
+    <td width="12" align="left" valign="top"><img alt="Check" src="gfx/check.gif" width="10" height="10"></td>
+    <td><a href="https://github.com/mucommander/mucommander/issues">Report bugs</a>, suggest new features or improvements.</td>
+  </tr>
+  <tr> 
+    <td align="left" valign="top"><img alt="Check" src="gfx/check.gif" width="10" height="10"></td>
+    <td>
+      If you happen to speak a language that muCommander is not available in, you can <a href="https://github.com/mucommander/mucommander/wiki/Translations">help translate</a> the interface
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><img alt="Check" src="gfx/check.gif" width="10" height="10"></td>
+    <td>If you're a <a href="https://github.com/mucommander/mucommander/wiki/Developer-Resources">developer</a>, you can help with the code</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><img alt="Check" src="gfx/check.gif" width="10" height="10"></td>
+    <td>If you're a graphic designer, you can contribute some artwork</td>
+  </tr>
+  <tr><td colspan="2">&nbsp;</td></tr>
+<!--  <tr><td colspan="2" align="center">In any case, head over to the <a href="forums/">forums</a> to get in touch with the community!</td></tr> -->
+</table>
+
+</td></tr></table></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><p>&nbsp;</p><img alt="Separator" src="gfx/separator.gif" width="600" height="1"><p>&nbsp;</p></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><table border="0" width="90%"><tr><td>
+<p align="center" class="title"><a name="donate" id="donate"></a>Donate</p>
+<p align="center">
+  If muCommander is useful to you, please consider making a donation, even a small one!<br>This application is free and intends to remain so, please support it if you can.
+</p>
+
+<div align="center"><a href="https://flattr.com/submit/auto?fid=q26vzp&url=http%3A%2F%2Fwww.mucommander.com" target="_blank"><img src="https://button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a></div>
+<p align="center"><a href="https://github.com/mucommander/mucommander/wiki/Donate#donators">List of generous donators</a></p>
+
+</td></tr></table></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><p>&nbsp;</p><img alt="Separator" src="gfx/separator.gif" width="600" height="1"><p>&nbsp;</p></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><table border="0" width="90%"><tr><td>
+<p class="title" align="center">Contact</p>
+<a name="contact"/>
+<p align="center">
+<!--  Please use the <a href="forums/">forums</a> to post any comment, question or suggestion.<br> -->
+   We have an <a href="https://github.com/mucommander/mucommander/wiki/IRC-Channel"> IRC channel</a> that you're welcome to join.
+<!--  For anything else, feel free to use this <a href="contact.php">contact form</a> to get in touch with us. -->
+   <br/><br/>Your feedback is important and always welcome!
+   <p>&nbsp;</p>
+</p>
+</td></tr></table></td></tr><tr><td bgcolor="#006B92" align="center" colspan="3"><tr><td width="4" height="4" align="left" valign="bottom" bgcolor="#006B92"><img alt="Corner" src="gfx/corner_dark_bottomleft.gif" width="4" height="4"></td><td bgcolor="#006B92" align="center"><table width="384" border="0" cellspacing="8" cellpadding="10"><tr> <td align="center">
+<!-- <p align="center"><a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=maxence"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=maxence"></script>&nbsp;<a href="http://www.addthis.com/feed.php?pub=maxence&h1=http%3A%2F%2Fwww.mucommander.com%2Findex.rdf&t1=" title="Subscribe using any feed reader!"><img src="http://s9.addthis.com/button1-rss.gif" width="125" height="16" border="0" alt="AddThis Feed Button" /></a></p> -->
+</td></tr></table></td><td width="4" height="4" align="right" valign="bottom" bgcolor="#006B92"><img alt="Corner" src="gfx/corner_dark_bottomright.gif" width="4" height="4"></td></tr></table><script src="https://www.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+_uacct = "UA-277034-1";
+urchinTracker();
+</script></body></html>
