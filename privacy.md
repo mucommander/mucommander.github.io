@@ -68,4 +68,4 @@ You are advised to review this Privacy Policy periodically for any changes. Chan
 
 If you have any questions about this Privacy Policy, You can contact us:
 
--   By email:  mucommander@gmail.com
+-   By email:  arik.hadas1@gmail.com
