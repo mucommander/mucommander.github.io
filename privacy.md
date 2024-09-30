@@ -12,6 +12,8 @@ We use Your Personal data to provide and improve the Application. By using the A
 
 ## Collecting and Using Your Personal Data
 
+Security procedures are in place to protect the confidentiality of your data.
+
 ### Types of Data Collected
 
 #### Personal Data
@@ -20,6 +22,8 @@ While using Our Application, your personal identification information from third
 
 - Email address
 - First name and last name 
+
+We store Your Personal data for a period of time that is consistent with our business purposes.
 
 #### File Information
 
@@ -52,7 +56,7 @@ Our Application does not retain content or any information on the content of fil
 
 ## Transfer of Your Personal Data
 
-The content of files that is collected is not transferred automatically by Our Application.  
+We do not transfer or disclose your information to third parties.
 
 Note that content of files may be copied to remote services, remote servers or local files as a consequence of an operation requested by You.
 
